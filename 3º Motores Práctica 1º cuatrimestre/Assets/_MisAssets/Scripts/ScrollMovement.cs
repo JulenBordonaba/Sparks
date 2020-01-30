@@ -8,11 +8,14 @@ public class ScrollMovement : MonoBehaviour
 
     public float velocity = 10f;
 
+    public float baseVelocity;
+
 
     // Start is called before the first frame update
     void Start()
     {
         current = this;
+        baseVelocity = velocity;
     }
 
     // Update is called once per frame

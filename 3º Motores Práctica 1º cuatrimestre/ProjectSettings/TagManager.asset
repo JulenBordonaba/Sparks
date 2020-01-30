@@ -10,6 +10,7 @@ TagManager:
   - Node
   - Resistance
   - Batery
+  - Accelerator
   layers:
   - Default
   - TransparentFX

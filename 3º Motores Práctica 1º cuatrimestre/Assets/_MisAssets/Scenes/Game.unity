@@ -741,6 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 10
+  baseVelocity: 0
 --- !u!4 &2133107954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8009995490154267271, guid: d72acdb3fa33ebf45819d44ad6b4ea03,

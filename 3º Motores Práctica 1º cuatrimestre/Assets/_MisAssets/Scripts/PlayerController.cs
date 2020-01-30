@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float verticalVelocity;
+    public float healthPerJump = 1;
 
     
     private bool onNode = false;
@@ -35,13 +36,15 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetAxisRaw("Vertical") > 0.001f)
+        if (Input.GetAxisRaw("Vertical") > 0.001f && rb.velocity.y<=0)
         {
             rb.velocity = new Vector3(0, verticalVelocity * 1, 0);
+            currentHealth -= healthPerJump;
         }
-        else if (Input.GetAxisRaw("Vertical") < -0.001f)
+        else if (Input.GetAxisRaw("Vertical") < -0.001f && rb.velocity.y>=0)
         {
             rb.velocity = new Vector3(0, verticalVelocity * -1, 0);
+            currentHealth -= healthPerJump;
         }
     }
 
@@ -85,6 +88,11 @@ public class PlayerController : MonoBehaviour
             currentHealth += other.GetComponent<Batery>().health;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         }
+        else if (other.CompareTag("Accelerator"))
+        {
+            Accelerator ac = other.GetComponent<Accelerator>();
+            StartCoroutine(Accelerate(ac));
+        }
     }
     
     public void onPlayerDead()
@@ -92,6 +100,13 @@ public class PlayerController : MonoBehaviour
         ScrollMovement.current.velocity = 0;
         rb.velocity = Vector3.zero;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public IEnumerator Accelerate(Accelerator ac)
+    {
+        ScrollMovement.current.velocity = ac.velocity;
+        yield return new WaitForSeconds(ac.duration);
+        ScrollMovement.current.velocity = ScrollMovement.current.baseVelocity;
     }
 
     public IEnumerator OnNodeEnter(Node n)
@@ -103,7 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             yield return null;
         }
-        ScrollMovement.current.velocity = 10;
+        ScrollMovement.current.velocity = ScrollMovement.current.baseVelocity;
         onNode = false;
         node = null;
 
