@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject[] modules;
     public GameObject[] conectionModules;
     public GameObject escenario;
-    public Text healthText;
 
     private float moduleLength = 10f;
     private float connectionModuleLength = 10f;
@@ -29,7 +28,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = player.currentHealth + "/" + player.maxHealth;
+
     }
 
 
@@ -37,11 +36,9 @@ public class GameManager : MonoBehaviour
     {
         int module = Random.Range((int)0, (int)modules.Length);
         int connectionModule = Random.Range((int)0, (int)conectionModules.Length);
+        
 
-        float lastConnectionModuleLength = connectionModuleLength;
-        float lastModuleLength = moduleLength;
-
-        float modulePos = isStart ? 16 : lastConnectionModuleLength + lastModuleLength;
+        float modulePos = isStart ? 16 : connectionModuleLength + moduleLength;
         float connectionModulePos = modulePos + modules[module].GetComponent<Module>().length;
 
         Instantiate(modules[module], new Vector3(modulePos, 0, 0), Quaternion.identity).transform.parent = escenario.transform;

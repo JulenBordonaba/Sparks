@@ -16,6 +16,9 @@ public class Module : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(transform.position.x<length*2)
+        {
+            Destroy(gameObject);
+        }
     }
 }

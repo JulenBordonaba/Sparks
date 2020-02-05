@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ScrollMovement : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ScrollMovement : MonoBehaviour
     public float velocity = 10f;
 
     public float baseVelocity;
+
+    public float score = 0;
+
+    public TextMeshProUGUI scoreText;
 
 
     // Start is called before the first frame update
@@ -22,5 +27,7 @@ public class ScrollMovement : MonoBehaviour
     void Update()
     {
         transform.position -= new Vector3(velocity *  Time.deltaTime, 0, 0);
+        score += velocity * Time.deltaTime;
+        scoreText.text = Mathf.FloorToInt(score).ToString();
     }
 }
