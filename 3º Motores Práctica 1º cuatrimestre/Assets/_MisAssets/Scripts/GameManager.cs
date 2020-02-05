@@ -38,12 +38,16 @@ public class GameManager : MonoBehaviour
         int module = Random.Range((int)0, (int)modules.Length);
         int connectionModule = Random.Range((int)0, (int)conectionModules.Length);
 
-        connectionModuleLength = conectionModules[connectionModule].GetComponent<Module>().length -2;
-        moduleLength = modules[module].GetComponent<Module>().length -2;
+        float lastConnectionModuleLength = connectionModuleLength;
+        float lastModuleLength = moduleLength;
 
-        float modulePos = isStart ? connectionModuleLength : connectionModuleLength + moduleLength;
+        float modulePos = isStart ? 16 : lastConnectionModuleLength + lastModuleLength;
+        float connectionModulePos = modulePos + modules[module].GetComponent<Module>().length;
 
         Instantiate(modules[module], new Vector3(modulePos, 0, 0), Quaternion.identity).transform.parent = escenario.transform;
-        Instantiate(conectionModules[connectionModule], new Vector3(modulePos+moduleLength, 0, 0), Quaternion.identity).transform.parent = escenario.transform;
+        Instantiate(conectionModules[connectionModule], new Vector3(connectionModulePos, 0, 0), Quaternion.identity).transform.parent = escenario.transform;
+
+        connectionModuleLength = conectionModules[connectionModule].GetComponent<Module>().length;
+        moduleLength = modules[module].GetComponent<Module>().length;
     }
 }
