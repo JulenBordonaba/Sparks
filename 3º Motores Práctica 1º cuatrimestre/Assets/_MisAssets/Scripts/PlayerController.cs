@@ -71,6 +71,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(other.CompareTag("ModuleStart"))
         {
+            print("pasa_por_module_start");
             GameManager.onModuleEnter.Invoke();
         }
         else if (other.CompareTag("Node"))
