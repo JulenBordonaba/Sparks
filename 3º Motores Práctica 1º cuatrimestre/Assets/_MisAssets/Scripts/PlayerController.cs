@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController current;
+
     public Rigidbody rb;
 
     [Header("Stats")]
@@ -16,6 +18,13 @@ public class PlayerController : MonoBehaviour
     
     private bool onNode = false;
     private Node node;
+    private float accelerationTime = 0;
+    private bool inAcceleration = false;
+
+    private void Awake()
+    {
+        current = this;
+    }
 
     private void Start()
     {
@@ -24,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.inPause) return;
         if(onNode)
         {
             currentHealth -= node.healthPerSecond * Time.deltaTime;
@@ -32,6 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             onPlayerDead();
         }
+        Accelerate();
     }
 
     private void Move()
@@ -72,7 +83,7 @@ public class PlayerController : MonoBehaviour
         else if(other.CompareTag("ModuleStart"))
         {
             print("pasa_por_module_start");
-            GameManager.onModuleEnter.Invoke();
+            //GameManager.onModuleEnter.Invoke();
         }
         else if (other.CompareTag("Node"))
         {
@@ -92,7 +103,9 @@ public class PlayerController : MonoBehaviour
         else if (other.CompareTag("Accelerator"))
         {
             Accelerator ac = other.GetComponent<Accelerator>();
-            StartCoroutine(Accelerate(ac));
+            accelerationTime = ac.duration;
+            ScrollMovement.current.velocity = ac.velocity;
+            inAcceleration = true;
         }
     }
     
@@ -103,11 +116,22 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public IEnumerator Accelerate(Accelerator ac)
+    public void Accelerate()
     {
-        ScrollMovement.current.velocity = ac.velocity;
-        yield return new WaitForSeconds(ac.duration);
-        ScrollMovement.current.velocity = ScrollMovement.current.baseVelocity;
+        
+
+        if(accelerationTime>0)
+        {
+            accelerationTime -= Time.deltaTime;
+        }
+        else if (accelerationTime<=0 && inAcceleration==true)
+        {
+            accelerationTime = 0;
+            inAcceleration = false;
+            ScrollMovement.current.velocity = ScrollMovement.current.baseVelocity;
+        }
+
+        
     }
 
     public IEnumerator OnNodeEnter(Node n)
