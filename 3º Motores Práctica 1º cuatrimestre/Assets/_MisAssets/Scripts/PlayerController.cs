@@ -47,12 +47,12 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && rb.velocity.y<=0)
+        if (Input.GetAxisRaw("Vertical") > 0.001f && rb.velocity.y<=0)
         {
             rb.velocity = new Vector3(0, verticalVelocity * 1, 0);
             currentHealth -= healthPerJump;
         }
-        else if ((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow)) && rb.velocity.y>=0)
+        else if (Input.GetAxisRaw("Vertical") < -0.001f && rb.velocity.y>=0)
         {
             rb.velocity = new Vector3(0, verticalVelocity * -1, 0);
             currentHealth -= healthPerJump;
