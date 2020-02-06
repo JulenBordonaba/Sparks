@@ -9,6 +9,11 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rb;
 
+    public AudioSource audioSource;
+
+    [Header("Audio Clips")]
+    public AudioClip saltoClip;
+
     [Header("Stats")]
     public float maxHealth;
     public float currentHealth;
@@ -51,11 +56,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector3(0, verticalVelocity * 1, 0);
             currentHealth -= healthPerJump;
+            audioSource.PlayOneShot(saltoClip);
         }
         else if (Input.GetAxisRaw("Vertical") < -0.001f && rb.velocity.y>=0)
         {
             rb.velocity = new Vector3(0, verticalVelocity * -1, 0);
             currentHealth -= healthPerJump;
+            audioSource.PlayOneShot(saltoClip);
         }
     }
 
@@ -104,7 +111,8 @@ public class PlayerController : MonoBehaviour
         {
             Accelerator ac = other.GetComponent<Accelerator>();
             accelerationTime = ac.duration;
-            ScrollMovement.current.velocity = ac.velocity;
+            ScrollMovement.current.velocity += ac.velocity;
+            ScrollMovement.current.velocity = Mathf.Clamp(ScrollMovement.current.velocity, 0, 25);
             inAcceleration = true;
         }
     }
@@ -113,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         ScrollMovement.current.velocity = 0;
         rb.velocity = Vector3.zero;
+        ScrollMovement.current.SaveRecord();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -143,6 +152,7 @@ public class PlayerController : MonoBehaviour
         {
             yield return null;
         }
+        Move();
         ScrollMovement.current.velocity = ScrollMovement.current.baseVelocity;
         onNode = false;
         node = null;

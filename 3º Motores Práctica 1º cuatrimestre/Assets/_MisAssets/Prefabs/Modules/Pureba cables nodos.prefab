@@ -642,11 +642,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6147024822749796575}
     m_Modifications:
-    - target: {fileID: 7834572977841015759, guid: a032262a088d1004a9ec2ed70f3e44f2,
-        type: 3}
-      propertyPath: m_Name
-      value: Accelerator
-      objectReference: {fileID: 0}
     - target: {fileID: 7834572977841015764, guid: a032262a088d1004a9ec2ed70f3e44f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -716,6 +711,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834572977841015759, guid: a032262a088d1004a9ec2ed70f3e44f2,
+        type: 3}
+      propertyPath: m_Name
+      value: Accelerator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834572977841015752, guid: a032262a088d1004a9ec2ed70f3e44f2,
+        type: 3}
+      propertyPath: velocity
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a032262a088d1004a9ec2ed70f3e44f2, type: 3}
