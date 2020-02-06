@@ -52,13 +52,13 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetAxisRaw("Vertical") > 0.001f && rb.velocity.y<=0)
+        if (/*Input.GetButtonDown("Vertical") &&*/ Input.GetAxisRaw("Vertical") > 0.001f && rb.velocity.y<=0)
         {
             rb.velocity = new Vector3(0, verticalVelocity * 1, 0);
             currentHealth -= healthPerJump;
             audioSource.PlayOneShot(saltoClip);
         }
-        else if (Input.GetAxisRaw("Vertical") < -0.001f && rb.velocity.y>=0)
+        else if (/*Input.GetButtonDown("Vertical") && */Input.GetAxisRaw("Vertical") < -0.001f && rb.velocity.y>=0)
         {
             rb.velocity = new Vector3(0, verticalVelocity * -1, 0);
             currentHealth -= healthPerJump;

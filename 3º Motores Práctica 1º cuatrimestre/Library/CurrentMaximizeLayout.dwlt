@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 879, y: 494}
   m_MaxSize: {x: 16004, y: 14044}
   vertical: 0
-  controlID: 9722
+  controlID: 11617
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 494}
   m_MaxSize: {x: 12004, y: 14044}
   vertical: 1
-  controlID: 9723
+  controlID: 11618
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 222}
   m_MaxSize: {x: 12004, y: 4022}
   vertical: 0
-  controlID: 9724
+  controlID: 11619
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -214,7 +214,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 988effffbe400000
+      m_ExpandedIDs: 320cecffd822f5ff1623f5ff8429f5ff9029f5ffc42af5ff988effffbe400000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -305,9 +305,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 344.17166, y: 204.33662, z: -21.355154}
+    m_Target: {x: -5.64796, y: -0.030896017, z: -0.07087293}
     speed: 2
-    m_Value: {x: 344.17166, y: 204.33662, z: -21.355154}
+    m_Value: {x: -5.64796, y: -0.030896017, z: -0.07087293}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -340,9 +340,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 187.17482
+    m_Target: 0.90126574
     speed: 2
-    m_Value: 187.17482
+    m_Value: 0.90126574
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -943,11 +943,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/_MisAssets/Prefabs/Modules
+    - Assets/_MisAssets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 68
   m_LastFolders:
-  - Assets/_MisAssets/Prefabs/Modules
+  - Assets/_MisAssets/Scenes
   m_LastFoldersGridSize: 68
   m_LastProjectPath: "C:\\Users\\Julen\\Desktop\\Julen\\Unity\\entrega-febrero-2020\\3\xBA
     Motores Pr\xE1ctica 1\xBA cuatrimestre"
@@ -955,9 +955,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 7}
-    m_SelectedIDs: 223d0000
-    m_LastClickedID: 15650
-    m_ExpandedIDs: 000000004a3b00009e3b0000423c000000ca9a3b
+    m_SelectedIDs: c83c0000
+    m_LastClickedID: 15560
+    m_ExpandedIDs: 000000004a3b0000423c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1010,8 +1010,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: c8400000
-    m_LastClickedInstanceID: 16584
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000b6d1ffff5e41000062400000a2400000ee41000080400000d241000002410000e0400000f63f00004c4100000e4200008241000006390000d8370000eaf8ffff00000000543b0000f63000004231000046310000fc300000223a0000962e00008c320000a4320000a2820000a22d0000a8310000902d0000
     m_RenameOverlay:
@@ -1130,7 +1130,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
-  m_LastInspectedObjectInstanceID: 16584
+  m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
 --- !u!114 &20
 MonoBehaviour:
